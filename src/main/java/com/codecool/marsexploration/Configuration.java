@@ -15,6 +15,5 @@ public class Configuration {
         this.outputFilePath = outputFilePath;
         this.mapWidth = mapWidth;
         this.terrainTypes = new HashSet<>();
-
     }
 }
