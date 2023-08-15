@@ -9,12 +9,12 @@ import java.util.*;
 public class Configuration {
     private final String outputFilePath;
     private final int mapWidth;
-    private final Set<TerrainElement> terrainElements;
+    private final Set<TerrainType> terrainTypes;
 
     public Configuration(String outputFilePath, int mapWidth) {
         this.outputFilePath = outputFilePath;
         this.mapWidth = mapWidth;
-        this.terrainElements = new HashSet<>();
+        this.terrainTypes = new HashSet<>();
 
     }
 }
