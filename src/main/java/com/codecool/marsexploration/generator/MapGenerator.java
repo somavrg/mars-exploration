@@ -1,4 +1,4 @@
-package com.codecool.marsexploration.map;
+package com.codecool.marsexploration.generator;
 
 import com.codecool.marsexploration.configuration.Configuration;
 import com.codecool.marsexploration.data.Coordinate;
@@ -9,14 +9,17 @@ import java.util.Map;
 
 public class MapGenerator {
     private final Configuration config;
+    private final ShapeGenerator shapeGenerator;
 
-    public MapGenerator(Configuration config) {
+    public MapGenerator(Configuration config, ShapeGenerator shapeGenerator) {
         this.config = config;
+        this.shapeGenerator = shapeGenerator;
     }
 
     public Map<Coordinate, TerrainType> generate() {
         Map<Coordinate, TerrainType> map = new HashMap<>();
         generatePlainMap(map);
+
 
         return map;
     }
