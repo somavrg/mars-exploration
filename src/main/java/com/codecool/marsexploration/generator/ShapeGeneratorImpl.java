@@ -2,6 +2,7 @@ package com.codecool.marsexploration.generator;
 
 import com.codecool.marsexploration.configuration.Configuration;
 import com.codecool.marsexploration.data.Coordinate;
+import com.codecool.marsexploration.data.Shape;
 import com.codecool.marsexploration.data.TerrainType;
 
 import java.util.HashMap;
@@ -18,8 +19,9 @@ public class ShapeGeneratorImpl implements ShapeGenerator {
     }
 
     @Override
-    public Map<Coordinate, TerrainType> generateShape(int size, TerrainType terrainType) {
+    public Shape generateShape(int size, TerrainType terrainType) {
         Map<Coordinate, TerrainType> shapeMap = new HashMap<>();
+
 
         if (size > configuration.getMapWidth()) {
             throw new IllegalArgumentException("Size cannot be greater than map side");
@@ -32,6 +34,6 @@ public class ShapeGeneratorImpl implements ShapeGenerator {
                 }
             }
         }
-        return shapeMap;
+        return new Shape(size, shapeMap);
     }
 }
