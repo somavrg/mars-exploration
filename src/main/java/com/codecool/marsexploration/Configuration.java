@@ -29,4 +29,8 @@ public class Configuration {
     public Set<TerrainType> getTerrainTypes() {
         return new HashSet<>(terrainTypes);
     }
+
+    public void addTerrainType(TerrainType terrainType) {
+        terrainTypes.add(terrainType);
+    }
 }
