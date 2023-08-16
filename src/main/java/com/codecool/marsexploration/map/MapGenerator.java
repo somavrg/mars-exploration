@@ -9,22 +9,22 @@ import java.util.Map;
 
 public class MapGenerator {
     private final Configuration config;
-    private final Map<Coordinate, TerrainType> map;
 
     public MapGenerator(Configuration config) {
         this.config = config;
-        this.map = new HashMap<>();
     }
 
     public Map<Coordinate, TerrainType> generate() {
-        generatePlainMap();
-        return this.map;
+        Map<Coordinate, TerrainType> map = new HashMap<>();
+        generatePlainMap(map);
+
+        return map;
     }
 
-    private void generatePlainMap() {
+    private void generatePlainMap(Map<Coordinate, TerrainType> map) {
         for (int y = 0; y < config.getMapWidth(); y++) {
             for (int x = 0; x < config.getMapWidth(); x++) {
-                map.put(new Coordinate(x, y), new TerrainType("Void", '~'));
+                map.put(new Coordinate(x, y), new TerrainType("Void", ' '));
             }
         }
     }
