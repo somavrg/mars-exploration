@@ -1,11 +1,11 @@
-package com.codecool.marsexploration;
+package com.codecool.marsexploration.map;
 
+import com.codecool.marsexploration.configuration.Configuration;
 import com.codecool.marsexploration.data.Coordinate;
+import com.codecool.marsexploration.data.TerrainType;
 
-import javax.swing.plaf.basic.BasicDesktopIconUI;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Random;
 
 public class MapGenerator {
     private final Configuration config;
@@ -18,7 +18,6 @@ public class MapGenerator {
 
     public Map<Coordinate, TerrainType> generate() {
         generatePlainMap();
-        generateShape(6,5,10);
         return this.map;
     }
 

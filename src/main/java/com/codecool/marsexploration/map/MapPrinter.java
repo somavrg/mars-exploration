@@ -1,13 +1,13 @@
-package com.codecool.marsexploration;
+package com.codecool.marsexploration.map;
 
+import com.codecool.marsexploration.configuration.Configuration;
 import com.codecool.marsexploration.data.Coordinate;
+import com.codecool.marsexploration.data.TerrainType;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.security.Key;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 public class MapPrinter {
     private final Configuration configuration;

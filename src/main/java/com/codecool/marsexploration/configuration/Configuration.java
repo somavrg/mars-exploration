@@ -1,4 +1,6 @@
-package com.codecool.marsexploration;
+package com.codecool.marsexploration.configuration;
+
+import com.codecool.marsexploration.data.TerrainType;
 
 import java.util.*;
 

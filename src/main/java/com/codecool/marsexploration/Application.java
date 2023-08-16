@@ -1,6 +1,9 @@
 package com.codecool.marsexploration;
 
-import java.util.Map;
+import com.codecool.marsexploration.configuration.Configuration;
+import com.codecool.marsexploration.map.MapGenerator;
+import com.codecool.marsexploration.map.MapPrinter;
+
 import java.util.Random;
 
 public class Application {
