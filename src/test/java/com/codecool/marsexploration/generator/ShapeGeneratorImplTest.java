@@ -1,6 +1,7 @@
 package com.codecool.marsexploration.generator;
 
 import com.codecool.marsexploration.configuration.Configuration;
+import com.codecool.marsexploration.data.Shape;
 import com.codecool.marsexploration.data.TerrainType;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
@@ -48,4 +49,27 @@ class ShapeGeneratorImplTest {
         }
     }
 
+    @Nested
+    class GenerateShapeCreatesShape {
+        @Test
+        void whenRandomIsAlwaysBiggerThanChance() {
+            int mapSize = 25;
+            Configuration mockConfiguration = mock(Configuration.class);
+            Random mockRandom = mock(Random.class);
+            TerrainType mockTerrainType = mock(TerrainType.class);
+            int chance = 100;
+            when(mockConfiguration.getMapWidth()).thenReturn(mapSize);
+            ShapeGenerator shapeGenerator = new ShapeGeneratorImpl(mockRandom, mockConfiguration);
+            when(mockRandom.nextInt(chance)).thenReturn(chance);
+            Shape shape = shapeGenerator.generateShape(mapSize, mockTerrainType);
+
+            for (int y = 0; y < mapSize; y++) {
+                for (int x = 0; x < mapSize; x++) {
+                    assertEquals(shape.getTerrainType(x, y), mockTerrainType);
+                }
+            }
+
+
+        }
+    }
 }
