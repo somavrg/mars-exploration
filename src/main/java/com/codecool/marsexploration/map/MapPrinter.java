@@ -11,14 +11,12 @@ import java.util.Map;
 
 public class MapPrinter {
     private final Configuration configuration;
-    private final Map<Coordinate, TerrainType> map;
 
-    public MapPrinter(Configuration configuration, Map<Coordinate, TerrainType> map) {
+    public MapPrinter(Configuration configuration) {
         this.configuration = configuration;
-        this.map = map;
     }
 
-    public void print() {
+    public void print(MarsMap marsMap) {
         String filePath = this.configuration.getOutputFilePath();
         int mapSize = this.configuration.getMapWidth();
         try {
@@ -27,7 +25,7 @@ public class MapPrinter {
                 StringBuilder stringBuilder = new StringBuilder();
                 for (int x = 0; x < mapSize; x++) {
                     Coordinate coordinate = new Coordinate(x, y);
-                    stringBuilder.append(this.map.get(coordinate).symbol());
+                    stringBuilder.append(marsMap.getTerrainTypeSymbolFromCoordinate(coordinate));
                 }
                 writer.write(stringBuilder.toString());
                 writer.newLine();

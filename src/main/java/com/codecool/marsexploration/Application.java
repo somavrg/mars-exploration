@@ -15,21 +15,19 @@ public class Application {
     public static void main(String[] args) {
         Random random = new Random();
         String filePath = "src/main/resources/testmap.txt";
-
         Configuration configuration = new Configuration(filePath,25);
         ShapeGenerator shapeGenerator = new ShapeGeneratorImpl(random, configuration);
-
         MapGenerator mapGenerator = new MapGenerator(random, configuration, shapeGenerator);
-
         var map = mapGenerator.generate();
-
         MarsMap marsMap = new MarsMap(map, configuration, random);
-        marsMap.placer(new Resource(new TerrainType("Water", '~'), new TerrainType("Pit", '#')));
+        MapPrinter mapPrinter = new MapPrinter(configuration);
+        MarsExploration marsExploration = new MarsExploration(mapPrinter,marsMap);
+        Resource waterResource = new Resource(new TerrainType("Water", '~'), new TerrainType("Pit", '#'));
+        Resource mineralResource = new Resource(new TerrainType("Mineral", '%'), new TerrainType("Mountain", '^'));
+        marsExploration.addResource(waterResource);
+        marsExploration.addResource(mineralResource);
 
-
-        MapPrinter mapPrinter = new MapPrinter(configuration, marsMap.getMap());
-
-        mapPrinter.print();
+        marsExploration.explore();
 
 
     }
