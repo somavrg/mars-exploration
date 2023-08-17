@@ -24,6 +24,9 @@ public class MarsMap {
     public Map<Coordinate, TerrainType> getMap(){
         return new HashMap<>(map);
     }
+    public char getTerrainTypeSymbolFromCoordinate(Coordinate coordinate){
+        return map.get(coordinate).symbol();
+    }
 
     public void placer(Resource resource) {
         for (int y = 0; y < configuration.getMapWidth(); y++) {
