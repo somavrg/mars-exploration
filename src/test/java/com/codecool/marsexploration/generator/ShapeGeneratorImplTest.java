@@ -45,7 +45,7 @@ class ShapeGeneratorImplTest {
             IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
                     () -> shapeGenerator.generateShape(generateSize, mockTerrainType));
 
-            assertTrue(exception.getMessage().contains(correctMessage));
+            assertEquals(exception.getMessage(), correctMessage);
         }
     }
 
