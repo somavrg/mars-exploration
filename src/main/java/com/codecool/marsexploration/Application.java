@@ -13,23 +13,28 @@ import java.util.Random;
 
 public class Application {
     public static void main(String[] args) {
-        int VISUALIZER_MAP_WIDTH = 32;
         Random random = new Random();
-        String filePath = "src/main/resources/";
+
+        int VISUALIZER_MAP_WIDTH = 32;
+        String filePath = "C:/Users/thehi/Documents/CODECOOL/PROJECTS/OOP/mars-exploration-visuals/";
+
         Configuration configuration = new Configuration(filePath,VISUALIZER_MAP_WIDTH);
-        ShapeGenerator shapeGenerator = new ShapeGeneratorImpl(random, configuration);
-        MapGenerator mapGenerator = new MapGenerator(random, configuration, shapeGenerator);
-        var map = mapGenerator.generate();
-        MarsMap marsMap = new MarsMap(map, configuration, random);
-        MapPrinter mapPrinter = new MapPrinter(configuration);
-        MarsExploration marsExploration = new MarsExploration(mapPrinter,marsMap);
+
         Resource waterResource = new Resource(new TerrainType("Water", '~'), new TerrainType("Pit", '#'));
         Resource mineralResource = new Resource(new TerrainType("Mineral", '%'), new TerrainType("Mountain", '^'));
+
+        ShapeGenerator shapeGenerator = new ShapeGeneratorImpl(random, configuration);
+        MapGenerator mapGenerator = new MapGenerator(random, configuration, shapeGenerator);
+        MapPrinter mapPrinter = new MapPrinter(configuration);
+        MarsExploration marsExploration = new MarsExploration(mapPrinter, mapGenerator, configuration, random);
+
         marsExploration.addResource(waterResource);
         marsExploration.addResource(mineralResource);
 
         marsExploration.explore();
-
+        marsExploration.explore();
+        marsExploration.explore();
+        marsExploration.explore();
 
     }
 }
