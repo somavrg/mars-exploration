@@ -11,6 +11,7 @@ import java.util.Map;
 
 public class MapPrinter {
     private final Configuration configuration;
+    private static int generatedMapId = 0;
 
     public MapPrinter(Configuration configuration) {
         this.configuration = configuration;
@@ -19,8 +20,9 @@ public class MapPrinter {
     public void print(MarsMap marsMap) {
         String filePath = this.configuration.getOutputFilePath();
         int mapSize = this.configuration.getMapWidth();
+        ++generatedMapId;
         try {
-            BufferedWriter writer = new BufferedWriter(new FileWriter(filePath));
+            BufferedWriter writer = new BufferedWriter(new FileWriter(filePath + "exploration-" + MapPrinter.generatedMapId + ".map"));
             for (int y = 0; y < mapSize; y++) {
                 StringBuilder stringBuilder = new StringBuilder();
                 for (int x = 0; x < mapSize; x++) {

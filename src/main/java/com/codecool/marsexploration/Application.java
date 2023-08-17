@@ -15,7 +15,7 @@ public class Application {
     public static void main(String[] args) {
         int VISUALIZER_MAP_WIDTH = 32;
         Random random = new Random();
-        String filePath = "src/main/resources/testmap.txt";
+        String filePath = "src/main/resources/";
         Configuration configuration = new Configuration(filePath,VISUALIZER_MAP_WIDTH);
         ShapeGenerator shapeGenerator = new ShapeGeneratorImpl(random, configuration);
         MapGenerator mapGenerator = new MapGenerator(random, configuration, shapeGenerator);
