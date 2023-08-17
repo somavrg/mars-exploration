@@ -25,13 +25,14 @@ public class MapGenerator {
         Map<Coordinate, TerrainType> map = new HashMap<>();
 
 
-        var mountain1 = shapeGenerator.generateShape(5, new TerrainType("Mountain", '^'));
-        var mountain2 = shapeGenerator.generateShape(5, new TerrainType("Mountain", '^'));
-        var mountain3 = shapeGenerator.generateShape(5, new TerrainType("Mountain", '^'));
+        int shapeSize = 5;
+        Shape mountain1 = shapeGenerator.generateShape(shapeSize, new TerrainType("Mountain", '^'));
+        Shape mountain2 = shapeGenerator.generateShape(shapeSize, new TerrainType("Mountain", '^'));
+        Shape mountain3 = shapeGenerator.generateShape(shapeSize, new TerrainType("Mountain", '^'));
 
-        var pit1 = shapeGenerator.generateShape(5, new TerrainType("Pit", '#'));
-        var pit2 = shapeGenerator.generateShape(5, new TerrainType("Pit", '#'));
-        var pit3 = shapeGenerator.generateShape(5, new TerrainType("Pit", '#'));
+        Shape pit1 = shapeGenerator.generateShape(shapeSize, new TerrainType("Pit", '#'));
+        Shape pit2 = shapeGenerator.generateShape(shapeSize, new TerrainType("Pit", '#'));
+        Shape pit3 = shapeGenerator.generateShape(shapeSize, new TerrainType("Pit", '#'));
 
         generatePlainMap(map);
 
@@ -63,7 +64,7 @@ public class MapGenerator {
 
         for (int y = 0; y < configuration.getMapWidth(); y++) {
             for (int x = 0; x < configuration.getMapWidth(); x++) {
-                var terrainElement = shape.getTerrainType(x, y);
+                TerrainType terrainElement = shape.getTerrainType(x, y);
                 if (terrainElement != null) {
                     map.put(new Coordinate(x + offsetX, y + offsetY), terrainElement);
                 }
