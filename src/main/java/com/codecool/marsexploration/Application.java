@@ -16,6 +16,7 @@ public class Application {
         Random random = new Random();
 
         int VISUALIZER_MAP_WIDTH = 32;
+        int SIMULATION_AMOUNT = 4;
         String filePath = "C:/Users/thehi/Documents/CODECOOL/PROJECTS/OOP/mars-exploration-visuals/";
 
         Configuration configuration = new Configuration(filePath,VISUALIZER_MAP_WIDTH);
@@ -31,10 +32,8 @@ public class Application {
         marsExploration.addResource(waterResource);
         marsExploration.addResource(mineralResource);
 
-        marsExploration.explore();
-        marsExploration.explore();
-        marsExploration.explore();
-        marsExploration.explore();
+        marsExploration.explore(SIMULATION_AMOUNT);
 
     }
+
 }

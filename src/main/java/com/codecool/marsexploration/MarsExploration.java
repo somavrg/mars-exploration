@@ -36,11 +36,13 @@ public class MarsExploration {
         return new MarsMap(mapGenerator.generate(), configuration, random);
     }
 
-    public void explore() {
-        MarsMap marsMap = new MarsMap(mapGenerator.generate(), configuration, random);
-        resources.forEach(marsMap::placer);
-        mapPrinter.print(marsMap);
+    public void explore(int amount) {
+        for (int i = 0; i < amount; i++) {
+            MarsMap marsMap = new MarsMap(mapGenerator.generate(), configuration, random);
+            resources.forEach(marsMap::placer);
+            mapPrinter.print(marsMap);
+        }
+
     }
 
-    ;
 }
