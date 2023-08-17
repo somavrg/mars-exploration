@@ -1,10 +1,13 @@
 package com.codecool.marsexploration;
 
 import com.codecool.marsexploration.configuration.Configuration;
+import com.codecool.marsexploration.data.Resource;
+import com.codecool.marsexploration.data.TerrainType;
 import com.codecool.marsexploration.generator.ShapeGenerator;
 import com.codecool.marsexploration.generator.MapGenerator;
 import com.codecool.marsexploration.generator.ShapeGeneratorImpl;
 import com.codecool.marsexploration.map.MapPrinter;
+import com.codecool.marsexploration.map.MarsMap;
 
 import java.util.Random;
 
@@ -20,9 +23,13 @@ public class Application {
 
         var map = mapGenerator.generate();
 
-        MapPrinter mapPrinter = new MapPrinter(configuration, map);
-        mapPrinter.print();
+        MarsMap marsMap = new MarsMap(map, configuration, random);
+        marsMap.placer(new Resource(new TerrainType("Water", '~'), new TerrainType("Pit", '#')));
 
+
+        MapPrinter mapPrinter = new MapPrinter(configuration, marsMap.getMap());
+
+        mapPrinter.print();
 
 
     }

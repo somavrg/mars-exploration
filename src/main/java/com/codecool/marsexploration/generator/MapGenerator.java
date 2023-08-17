@@ -2,6 +2,7 @@ package com.codecool.marsexploration.generator;
 
 import com.codecool.marsexploration.configuration.Configuration;
 import com.codecool.marsexploration.data.Coordinate;
+import com.codecool.marsexploration.data.Resource;
 import com.codecool.marsexploration.data.Shape;
 import com.codecool.marsexploration.data.TerrainType;
 
@@ -45,6 +46,14 @@ public class MapGenerator {
         return map;
     }
 
+    private void generatePlainMap(Map<Coordinate, TerrainType> map) {
+        for (int y = 0; y < configuration.getMapWidth(); y++) {
+            for (int x = 0; x < configuration.getMapWidth(); x++) {
+                map.put(new Coordinate(x, y), new TerrainType("Void", ' '));
+            }
+        }
+    }
+
     private void placeShapeOnMap(
             Map<Coordinate, TerrainType> map,
             Shape shape) {
@@ -58,14 +67,6 @@ public class MapGenerator {
                 if (terrainElement != null) {
                     map.put(new Coordinate(x + offsetX, y + offsetY), terrainElement);
                 }
-            }
-        }
-    }
-
-    private void generatePlainMap(Map<Coordinate, TerrainType> map) {
-        for (int y = 0; y < configuration.getMapWidth(); y++) {
-            for (int x = 0; x < configuration.getMapWidth(); x++) {
-                map.put(new Coordinate(x, y), new TerrainType("Void", ' '));
             }
         }
     }
