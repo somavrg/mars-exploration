@@ -10,6 +10,8 @@ import java.util.Map;
 import java.util.Random;
 
 public class ShapeGeneratorImpl implements ShapeGenerator {
+    public static final int MAX_CHANCE = 100;
+    public static final int CHANCE = 30;
     private final Random random;
     private final Configuration configuration;
 
@@ -29,7 +31,7 @@ public class ShapeGeneratorImpl implements ShapeGenerator {
 
         for (int y = 0; y < size; y++) {
             for (int x = 0; x < size; x++) {
-                if (random.nextInt(100) > 30) {
+                if (random.nextInt(MAX_CHANCE) > CHANCE) {
                     shapeMap.put(new Coordinate(x, y), terrainType);
                 }
             }
